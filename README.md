@@ -29,7 +29,7 @@ ssh to your machine using putty or powershell
  ```
  #### Next, get the RTMP module source code from git:
  ```
- wget https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/archive/dev.zip
+ wget https://github.com/anwarofficial/Ubuntu-RTMP-SERVER/archive/anwar.zip
  ls
  sudo apt install unzip
  unzip dev.zip
@@ -38,7 +38,7 @@ ssh to your machine using putty or powershell
  #### Now Compile/build nginx:
  ```
  cd nginx-1.20.0
- ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-dev
+ ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module-anwar
  make
 sudo make install
 ```
@@ -64,7 +64,7 @@ rtmp {
         listen 1935; # Listen on standard RTMP port
         chunk_size 4000;
 
-        application show {
+        application anwar {
             live on;
             # Turn on HLS
             hls on;
