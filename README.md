@@ -32,7 +32,7 @@ ssh to your machine using putty or powershell
  wget https://github.com/anwarofficial/Ubuntu-RTMP-SERVER/archive/anwar.zip
  ls
  sudo apt install unzip
- unzip dev.zip
+ unzip anwar.zip
  ```
  
  #### Now Compile/build nginx:
@@ -85,7 +85,7 @@ http {
     default_type application/octet-stream;
 
     server {
-        listen 8080;
+        listen 3333;
 
         location / {
             # Disable cache
@@ -118,7 +118,7 @@ http {
 #### Things you need to know about the nginx.conf file
 1- Your application name is show (You can use any name)
 
-2- The server listen to port 8080
+2- The server listen to port 3333
 
 3- The hls path is /nginx/hls
 #### Created nginx/hls and hls directories and change the ownership to be owend by www-data 
@@ -142,12 +142,12 @@ sudo /usr/local/nginx/sbin/nginx
 #### In OBS create a new profile, and change your Broadcast Settings thusly:
 ```
 Streaming Service: Custom
-Server: rtmp://<your server ip>/show
+Server: rtmp://<your server ip>/anwar
 Play Path/Stream Key: stream
 ```
 #### vlc syntax
 ``` 
-http://your server ip:8080/hls/stream.m3u8
+http://your server ip:3333/hls/stream.m3u8
 ```
 
 #### To check the streaming files on the vm and the rtmp service
@@ -160,13 +160,13 @@ netstat -plntu | grep 1935
 
 #### You might you need to allow thes ports on your machine
 ```
-sudo ufw allow 8080
+sudo ufw allow 3333
 sudo ufw allow 1935
 sudo ufw enable
 sudo ufw status 
 ```
 #### NOTE: If you're using AWS instance make sure that your security inbound group role has these two ports open
-##### 8080, 80 and 1935
+##### 3333, 80 and 1935
 
 
  
