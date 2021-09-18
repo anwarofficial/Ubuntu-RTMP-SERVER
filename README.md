@@ -68,7 +68,7 @@ rtmp {
             live on;
             # Turn on HLS
             hls on;
-            hls_path /nginx/hls/;
+            hls_path /usr/local/nginx/hls/;
             hls_fragment 3;
             hls_playlist_length 60;
             # disable consuming the stream from nginx as rtmp
@@ -110,7 +110,7 @@ http {
                 video/mp2t ts;
             }
 
-            root /nginx/;
+            root /usr/local/nginx/;
         }
     }
 }
@@ -124,9 +124,9 @@ http {
 #### Created nginx/hls and hls directories and change the ownership to be owend by www-data 
 ```
 mkdir /nginx
-mkdir/nginx/hls
-sudo chown -R www-data:www-data /nginx/
-ls -al /nginx
+mkdir /usr/local/nginx/hls
+sudo chown -R www-data:www-data /usr/local/nginx/
+ls -al /usr/local/nginx
 ```
 
 #### Test the configuration file then start nginx
@@ -152,7 +152,7 @@ http://your server ip:3333/hls/stream.m3u8
 
 #### To check the streaming files on the vm and the rtmp service
 ```
-cd /nginx/hls/
+cd /usr/local/nginx/hls/
 ls -al
 # to check the rtmp service 
 netstat -plntu | grep 1935
